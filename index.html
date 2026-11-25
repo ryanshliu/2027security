@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>天母森林 116 年物管合約調整（方案一）管委會審議指南</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts Noto Sans TC 與 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
+                        num: ['Inter', '"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#0F294A',
+                        navyLight: '#1E3A8A',
+                        warmBg: '#F6F5F2',
+                        alertRed: '#DC2626',
+                        alertBg: '#FEF2F2',
+                        amberWarn: '#D97706',
+                        amberBg: '#FFFBEB',
+                        tealSafe: '#0D9488',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 手機優先閱讀基礎設定：確保內文至少 16px，行距寬鬆不吃力 */
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F6F5F2;
+            color: #1E293B;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 96px; /* 預留底部快捷工具列空間 */
+        }
+        .mobile-card {
+            background: #FFFFFF;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 18px -2px rgba(15, 41, 74, 0.08), 0 1px 4px rgba(15, 41, 74, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+        }
+        /* 隱藏捲軸但保留橫向滑動能力（用於快速導覽標籤） */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* 列印樣式優化 */
+        @media print {
+            body { background: #FFFFFF !important; padding-bottom: 0 !important; }
+            .no-print { display: none !important; }
+            .mobile-card { box-shadow: none !important; border: 1px solid #CBD5E1 !important; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-200 selection:text-navy">
+
+    <!-- 頂部快速導覽列（手機單手滑動切換章節） -->
+    <nav class="no-print sticky top-0 z-40 bg-navy/95 backdrop-blur-md text-white border-b border-white/10 shadow-md">
+        <div class="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+            <span class="text-xs font-bold tracking-wider text-amber-300 whitespace-nowrap shrink-0">
+                天母森林｜管委會審議
+            </span>
+            <div class="flex items-center gap-1.5 shrink-0">
+                <a href="#sec-overview" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/20 transition whitespace-nowrap">1. 總覽</a>
+                <a href="#sec-breakdown" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/20 transition whitespace-nowrap">2. 錢去哪</a>
+                <a href="#sec-questions" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-alertRed text-white shadow-sm whitespace-nowrap">3. 四大質疑點</a>
+                <a href="#sec-details" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/20 transition whitespace-nowrap">4. 16項明細</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主容器：限制最大寬度為 672px (max-w-2xl)，在手機與平板上皆呈最佳單欄卡片閱讀比例 -->
+    <main class="max-w-2xl mx-auto px-4 pt-5 space-y-6">
+
+        <!-- =========================================================
+             1. 頂部重點速覽區 (Hero Card)
+        ========================================================== -->
+        <section id="sec-overview" class="bg-gradient-to-br from-navy via-[#163663] to-[#1E3A8A] text-white rounded-3xl p-6 shadow-xl relative overflow-hidden">
+            <!-- 背景微光裝飾 -->
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-amber-400/15 blur-2xl pointer-events-none"></div>
+
+            <!-- 頂部標籤 -->
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full text-xs font-black bg-amber-400 text-navy tracking-wide">
+                    116 年物管合約調整審議
+                </span>
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-white/15 text-blue-100">
+                    115.10.20 報價版
+                </span>
+            </div>
+
+            <!-- 大標題 -->
+            <h1 class="text-2xl sm:text-3xl font-black leading-snug tracking-tight mb-2">
+                天母森林 116 年物管合約調漲解析
+            </h1>
+            <p class="text-base text-blue-100 font-medium mb-5">
+                方案一：維持原人力編制（早班 1.5 人 + 晚班組長 1.5 人）
+            </p>
+
+            <!-- 3 個核心大字指標卡片（手機 2+1 緊湊高對比排列） -->
+            <div class="grid grid-cols-2 gap-3 mb-5">
+                <!-- 現行 115 年 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/15">
+                    <div class="text-xs font-bold text-blue-200 mb-1">現行 115 年月費</div>
+                    <div class="font-num text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+                        $150,000
+                    </div>
+                    <div class="text-xs text-blue-200/80 mt-0.5">含稅 / 月</div>
+                </div>
+
+                <!-- 116 年方案一 -->
+                <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-4 border border-amber-300/40">
+                    <div class="text-xs font-bold text-amber-300 mb-1">116 年方案一報價</div>
+                    <div class="font-num text-xl sm:text-2xl font-extrabold text-amber-300 tracking-tight">
+                        $158,500
+                    </div>
+                    <div class="text-xs text-blue-100 mt-0.5">含稅 / 月</div>
+                </div>
+
+                <!-- 每月淨增（跨兩欄超大強調） -->
+                <div class="col-span-2 bg-white text-navy rounded-2xl p-4 sm:p-5 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-black text-slate-600">每月淨調漲金額</span>
+                            <span class="px-2 py-0.5 rounded-md bg-alertBg text-alertRed text-xs font-black">
+                                漲幅 +5.67%
+                            </span>
+                        </div>
+                        <div class="font-num text-3xl sm:text-4xl font-black text-alertRed tracking-tight mt-1">
+                            +$8,500 <span class="text-base font-bold text-slate-600">元 / 月</span>
+                        </div>
+                    </div>
+                    <div class="sm:text-right border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-200">
+                        <div class="text-xs font-bold text-slate-500">社區全年多支出</div>
+                        <div class="font-num text-lg font-black text-navy">+$102,000 元/年</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 一句話白話結論框 -->
+            <div class="bg-amber-400/20 border-l-4 border-amber-400 rounded-r-xl p-4">
+                <div class="text-xs font-black text-amber-300 uppercase tracking-wider mb-1">
+                    💡 委員一分鐘抓重點（白話結論）
+                </div>
+                <p class="text-base font-bold text-white leading-relaxed">
+                    這次漲價 <span class="text-amber-300 underline decoration-2 underline-offset-4">72.6% 不是調高保全本薪</span>，而是廠商藉機把過去沒收的「代班人員勞健保與勞退」全額轉嫁給社區！
+                </p>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             2. 漲價結構視覺拆解（未稅調漲 +$8,095/月 去了哪裡？）
+        ========================================================== -->
+        <section id="sec-breakdown" class="mobile-card p-5 sm:p-6">
+            <div class="mb-4">
+                <span class="inline-block px-2.5 py-1 rounded-md bg-blue-50 text-navyLight text-xs font-black mb-1.5">
+                    漲價結構透視
+                </span>
+                <h2 class="text-xl sm:text-2xl font-black text-navy leading-snug">
+                    未稅調漲 +$8,095/月 去了哪裡？
+                </h2>
+                <p class="text-sm text-slate-600 mt-1">
+                    未稅增額 $8,095 + 5% 營業稅 $405 ＝ 含稅總調漲 <strong>$8,500 元</strong>
+                </p>
+            </div>
+
+            <!-- 粗壯清晰的手機橫向堆疊進度條 -->
+            <div class="mb-5">
+                <div class="w-full h-11 rounded-2xl overflow-hidden flex shadow-inner bg-slate-100 p-1 gap-1">
+                    <!-- 72.6% 代班福利 -->
+                    <div style="width: 72.6%;" class="bg-alertRed rounded-l-xl flex items-center justify-center text-white font-num font-black text-sm shadow-sm">
+                        72.6%
+                    </div>
+                    <!-- 14.2% 正職調薪 -->
+                    <div style="width: 14.2%;" class="bg-navyLight flex items-center justify-center text-white font-num font-bold text-xs shadow-sm">
+                        14.2%
+                    </div>
+                    <!-- 13.2% 管銷利潤 -->
+                    <div style="width: 13.2%;" class="bg-amberWarn rounded-r-xl flex items-center justify-center text-white font-num font-bold text-xs shadow-sm">
+                        13.2%
+                    </div>
+                </div>
+            </div>
+
+            <!-- 四大區塊大字圖例卡片（手機單欄直列，閱讀零負擔） -->
+            <div class="space-y-3">
+                <!-- 1. 代班法定福利 -->
+                <div class="rounded-2xl bg-alertBg border-2 border-red-200 p-4">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-alertRed shrink-0"></span>
+                            <h3 class="text-base font-black text-slate-900">1. 代班人員法定福利補齊</h3>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-md bg-alertRed text-white text-xs font-black shrink-0">佔 72.6%</span>
+                    </div>
+                    <div class="font-num text-2xl font-black text-alertRed mt-1.5">
+                        +$5,879 <span class="text-sm font-bold text-slate-600">元 / 月</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mt-1 leading-relaxed">
+                        <strong>最大漲幅來源！</strong>115 年合約原本全數為 $0，今年一次新增勞保、健保、勞退與團保。
+                    </p>
+                </div>
+
+                <!-- 2. 正職調薪與法定連動 -->
+                <div class="rounded-2xl bg-blue-50/70 border border-blue-200 p-4">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-navyLight shrink-0"></span>
+                            <h3 class="text-base font-black text-slate-900">2. 正職調薪與假日加班連動</h3>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-md bg-navyLight text-white text-xs font-black shrink-0">佔 14.2%</span>
+                    </div>
+                    <div class="font-num text-2xl font-black text-navyLight mt-1.5">
+                        +$1,148 <span class="text-sm font-bold text-slate-600">元 / 月</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mt-1 leading-relaxed">
+                        早班本薪 +$500、晚班組長 +$500，加上國定假日加班費 (+$79) 與特休代金 (+$69)。
+                    </p>
+                </div>
+
+                <!-- 3. 廠商營業管銷與利潤連動 -->
+                <div class="rounded-2xl bg-amberBg border border-amber-200 p-4">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-amberWarn shrink-0"></span>
+                            <h3 class="text-base font-black text-slate-900">3. 廠商管銷與稅前利潤連動</h3>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-md bg-amberWarn text-white text-xs font-black shrink-0">佔 13.2%</span>
+                    </div>
+                    <div class="font-num text-2xl font-black text-amberWarn mt-1.5">
+                        +$1,068 <span class="text-sm font-bold text-slate-600">元 / 月</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mt-1 leading-relaxed">
+                        營業管銷 (+$624) 與稅前利潤 (+$444) 隨人事成本墊高而水漲船高（非剛性成本，可議價）。
+                    </p>
+                </div>
+
+                <!-- 4. 稅金差額 -->
+                <div class="rounded-2xl bg-slate-100 border border-slate-200 p-3.5 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-full bg-slate-400 shrink-0"></span>
+                        <span class="text-sm font-bold text-slate-700">4. 5% 營業稅差額</span>
+                    </div>
+                    <div class="font-num text-base font-black text-slate-800">+$405 元 / 月</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             3. 🔥 管委會必問「四大質疑點」互動卡片（核心功能）
+        ========================================================== -->
+        <section id="sec-questions" class="space-y-4">
+            <div class="px-1">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-alertRed text-white text-xs font-black mb-2 shadow-sm">
+                    🔥 開會必問｜委員質詢武器庫
+                </div>
+                <h2 class="text-2xl font-black text-navy leading-snug">
+                    針對調漲項目的「四大質疑點」
+                </h2>
+                <p class="text-sm text-slate-600 mt-1">
+                    點擊卡片可收合或展開「會議現場直接問廠商的話術」
+                </p>
+            </div>
+
+            <!-- 質疑點 1（預設展開） -->
+            <article class="mobile-card overflow-hidden border-l-8 border-alertRed">
+                <button type="button" onclick="toggleQuestion('q1')" class="w-full text-left p-5 flex items-start justify-between gap-3 focus:outline-none">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span class="px-2.5 py-0.5 rounded-md bg-alertRed text-white text-xs font-black">質疑點 1｜最大宗</span>
+                            <span class="font-num text-sm font-black text-alertRed">+$5,879 元 / 月</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black text-navy leading-snug">
+                            代班勞健保為何去年 $0、今年全額轉嫁？
+                        </h3>
+                    </div>
+                    <span id="icon-q1" class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-navy font-black shrink-0 mt-1 transition-transform duration-200 rotate-180">
+                        ▼
+                    </span>
+                </button>
+
+                <div id="body-q1" class="px-5 pb-5 space-y-3.5 border-t border-slate-100 pt-3.5">
+                    <!-- 數據標籤 -->
+                    <div class="bg-slate-50 rounded-xl p-3.5 text-sm space-y-1 border border-slate-200/80">
+                        <div class="font-bold text-slate-500 text-xs">📊 報價單數據變化：</div>
+                        <div class="font-num font-bold text-slate-800">
+                            • 代班勞保(含職災)：$0 → <span class="text-alertRed">$2,595</span><br>
+                            • 代班健保：$0 → <span class="text-alertRed">$1,428</span><br>
+                            • 代班勞退：$0 → <span class="text-alertRed">$1,656</span> ｜ 代班團保：$0 → <span class="text-alertRed">$200</span>
+                        </div>
+                    </div>
+
+                    <!-- 白話問題點 -->
+                    <div>
+                        <div class="text-xs font-black text-amberWarn uppercase mb-1">⚠️ 疑問所在：</div>
+                        <p class="text-base text-slate-700 leading-relaxed">
+                            代班屬於機動性質，並非每天滿編出勤，報價卻按「固定月投保」全額計收？若廠商找已在他處投保的兼職人員代班，社區等於白付固定保費！
+                        </p>
+                    </div>
+
+                    <!-- 會議現場質詢話術 -->
+                    <div class="bg-navy text-white rounded-2xl p-4 relative">
+                        <div class="text-xs font-black text-amber-300 mb-1.5 flex items-center gap-1.5">
+                            <span>🎤 會議現場直接問廠商：</span>
+                        </div>
+                        <p class="text-base font-medium leading-relaxed text-blue-50">
+                            「這筆每年多出 7 萬多元的代班保費，我們要求改為<strong>『實報實銷』</strong>。請公司每月請款時，必須檢附代班人員的<strong>實際出勤紀錄與勞健保投保明細</strong>，有實際加保才核銷，不能用固定月費打包收取。」
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 質疑點 2（預設展開） -->
+            <article class="mobile-card overflow-hidden border-l-8 border-navyLight">
+                <button type="button" onclick="toggleQuestion('q2')" class="w-full text-left p-5 flex items-start justify-between gap-3 focus:outline-none">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span class="px-2.5 py-0.5 rounded-md bg-navyLight text-white text-xs font-black">質疑點 2｜基數疑慮</span>
+                            <span class="font-num text-sm font-black text-navyLight">44,033 vs 38,100 元</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black text-navy leading-snug">
+                            說明寫「最低薪資 44,033 元」，表格卻寫 38,100 / 39,100 元？
+                        </h3>
+                    </div>
+                    <span id="icon-q2" class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-navy font-black shrink-0 mt-1 transition-transform duration-200 rotate-180">
+                        ▼
+                    </span>
+                </button>
+
+                <div id="body-q2" class="px-5 pb-5 space-y-3.5 border-t border-slate-100 pt-3.5">
+                    <div class="bg-slate-50 rounded-xl p-3.5 text-sm space-y-1 border border-slate-200/80">
+                        <div class="font-bold text-slate-500 text-xs">📊 報價單數據變化：</div>
+                        <div class="font-num font-bold text-slate-800">
+                            • 前言載明最低薪資：<span class="text-navyLight">44,033 元</span><br>
+                            • 早班本薪：$37,600 → $38,100 (<span class="text-navyLight">+$500</span>)<br>
+                            • 晚班組長：$38,600 → $39,100 (<span class="text-navyLight">+$500</span>)<br>
+                            • 代班費：$26,880 → $26,880 (<span class="text-slate-500">+$0 未調漲</span>)
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-black text-amberWarn uppercase mb-1">⚠️ 疑問所在：</div>
+                        <p class="text-base text-slate-700 leading-relaxed">
+                            1.5 人力工時如何拆分？為何基本工資調漲，代班費卻 $0 調整，反而是正職僅加 $500？需確認是否有「低報正職本薪」以規避勞健保級距調升之情形。
+                        </p>
+                    </div>
+
+                    <div class="bg-navy text-white rounded-2xl p-4">
+                        <div class="text-xs font-black text-amber-300 mb-1.5">🎤 會議現場直接問廠商：</div>
+                        <p class="text-base font-medium leading-relaxed text-blue-50">
+                            「請提供 <strong>44,033 元拆算成 38,100 與 39,100 元的工時計算公式</strong>。我們要確認現場保全實領薪資完全符合勞基法最低工資規定，避免未來產生勞資爭議讓社區承擔連帶責任。」
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 質疑點 3（可點擊展開） -->
+            <article class="mobile-card overflow-hidden border-l-8 border-amberWarn">
+                <button type="button" onclick="toggleQuestion('q3')" class="w-full text-left p-5 flex items-start justify-between gap-3 focus:outline-none">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span class="px-2.5 py-0.5 rounded-md bg-amberWarn text-white text-xs font-black">質疑點 3｜議價切入點</span>
+                            <span class="font-num text-sm font-black text-amberWarn">+$1,068 元 / 月</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black text-navy leading-snug">
+                            代班勞健保是法定代墊，為何管銷與利潤也跟著抽成？
+                        </h3>
+                    </div>
+                    <span id="icon-q3" class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-navy font-black shrink-0 mt-1 transition-transform duration-200">
+                        ▼
+                    </span>
+                </button>
+
+                <div id="body-q3" class="hidden px-5 pb-5 space-y-3.5 border-t border-slate-100 pt-3.5">
+                    <div class="bg-slate-50 rounded-xl p-3.5 text-sm space-y-1 border border-slate-200/80">
+                        <div class="font-bold text-slate-500 text-xs">📊 報價單數據變化：</div>
+                        <div class="font-num font-bold text-slate-800">
+                            • 營業管銷：$5,854 → $6,478 (<span class="text-amberWarn">+$624</span>)<br>
+                            • 稅前利潤：$7,406 → $7,850 (<span class="text-amberWarn">+$444</span>)<br>
+                            • 兩項合計多收：<span class="text-alertRed">$1,068 元/月（一年 $12,816 元）</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-black text-amberWarn uppercase mb-1">⚠️ 疑問所在：</div>
+                        <p class="text-base text-slate-700 leading-relaxed">
+                            政府調漲勞健保是為了保障勞工，廠商並未增加額外管理成本，卻按百分比同步墊高管銷與利潤，形同「變相多賺一筆」。
+                        </p>
+                    </div>
+
+                    <div class="bg-navy text-white rounded-2xl p-4">
+                        <div class="text-xs font-black text-amber-300 mb-1.5">🎤 會議現場直接問廠商（殺價籌碼）：</div>
+                        <p class="text-base font-medium leading-relaxed text-blue-50">
+                            「代班法定保費屬於純代收代付性質，不應計入管銷與利潤的加乘基數！我們建議扣除這筆連帶抽成，將每月含稅總價由 $158,500 議價降至 <strong>$156,000 ~ $157,000 元整數</strong>。」
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 質疑點 4（可點擊展開） -->
+            <article class="mobile-card overflow-hidden border-l-8 border-slate-500">
+                <button type="button" onclick="toggleQuestion('q4')" class="w-full text-left p-5 flex items-start justify-between gap-3 focus:outline-none">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span class="px-2.5 py-0.5 rounded-md bg-slate-700 text-white text-xs font-black">質疑點 4｜細節異常</span>
+                            <span class="font-num text-sm font-black text-slate-700">+$200 元 / 月</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black text-navy leading-snug">
+                            正職團保 $400 未變，為何代班團保多出一筆 $200？
+                        </h3>
+                    </div>
+                    <span id="icon-q4" class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-navy font-black shrink-0 mt-1 transition-transform duration-200">
+                        ▼
+                    </span>
+                </button>
+
+                <div id="body-q4" class="hidden px-5 pb-5 space-y-3.5 border-t border-slate-100 pt-3.5">
+                    <div class="bg-slate-50 rounded-xl p-3.5 text-sm space-y-1 border border-slate-200/80">
+                        <div class="font-bold text-slate-500 text-xs">📊 報價單數據變化：</div>
+                        <div class="font-num font-bold text-slate-800">
+                            • 正職團保：維持 $400 (<span class="text-slate-500">+$0</span>)<br>
+                            • 代班團保：$0 → <span class="text-alertRed">$200</span>（兩項合計 $600 / 月）
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-black text-amberWarn uppercase mb-1">⚠️ 疑問所在：</div>
+                        <p class="text-base text-slate-700 leading-relaxed">
+                            商業團體意外險通常為整批人頭或駐點席次投保，代班人員流動性高，廠商是否真有單獨為代班人員向保險公司加保？
+                        </p>
+                    </div>
+
+                    <div class="bg-navy text-white rounded-2xl p-4">
+                        <div class="text-xs font-black text-amber-300 mb-1.5">🎤 會議現場直接問廠商：</div>
+                        <p class="text-base font-medium leading-relaxed text-blue-50">
+                            「請提供<strong>團體意外險保單名冊與繳費收據</strong>，確認駐點天母森林的代班人員確實納入保障範圍，且意外險額度符合合約規範。」
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- =========================================================
+             4. 全 16 項報價明細（手機卡片式對比清單 + 大按鈕篩選器）
+        ========================================================== -->
+        <section id="sec-details" class="mobile-card p-5 sm:p-6">
+            <div class="mb-4">
+                <span class="inline-block px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-black mb-1.5">
+                    逐項查核清單
+                </span>
+                <h2 class="text-xl sm:text-2xl font-black text-navy leading-snug">
+                    全 16 項報價明細對比
+                </h2>
+                <p class="text-sm text-slate-600 mt-1">
+                    專為手機設計的垂直對比卡片，免左右滑動即可看清每筆增減
+                </p>
+            </div>
+
+            <!-- 三個大按鈕篩選器（易於手指點擊） -->
+            <div class="grid grid-cols-3 gap-2 bg-slate-100 p-1.5 rounded-2xl mb-5">
+                <button type="button" onclick="filterItems('all')" id="filter-all" class="filter-tab py-2.5 px-2 rounded-xl text-xs sm:text-sm font-black bg-navy text-white shadow-sm transition text-center">
+                    全部 16 項
+                </button>
+                <button type="button" onclick="filterItems('changed')" id="filter-changed" class="filter-tab py-2.5 px-2 rounded-xl text-xs sm:text-sm font-black text-slate-600 hover:text-navy transition text-center">
+                    🔴 有調漲 (9)
+                </button>
+                <button type="button" onclick="filterItems('unchanged')" id="filter-unchanged" class="filter-tab py-2.5 px-2 rounded-xl text-xs sm:text-sm font-black text-slate-600 hover:text-navy transition text-center">
+                    ⚪ 零變動 (7)
+                </button>
+            </div>
+
+            <!-- 手機專屬「雙行緊湊明細卡」列表容器 -->
+            <div id="mobileItemsContainer" class="space-y-2.5">
+                <!-- 由 JavaScript 精準渲染 16 項明細 -->
+            </div>
+
+            <!-- 總計彙總卡（置底醒目對照） -->
+            <div class="mt-6 rounded-2xl overflow-hidden border-2 border-navy">
+                <!-- 未稅總金額 -->
+                <div class="bg-slate-50 p-4 flex items-center justify-between border-b border-slate-200">
+                    <div>
+                        <div class="text-xs font-bold text-slate-500">總金額（未稅）</div>
+                        <div class="font-num text-sm sm:text-base font-bold text-slate-700 mt-0.5">
+                            $142,857 → <span class="text-navy font-black">$150,952</span>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-lg bg-red-100 text-alertRed font-num text-sm font-black">
+                        +$8,095
+                    </span>
+                </div>
+
+                <!-- 含稅總金額 -->
+                <div class="bg-navy text-white p-4 sm:p-5 flex items-center justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-amber-300">總金額（含 5% 營業稅）</div>
+                        <div class="font-num text-base sm:text-lg font-bold text-blue-100 mt-0.5">
+                            $150,000 → <span class="text-white text-xl font-black">$158,500</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="inline-block px-3 py-1.5 rounded-xl bg-alertRed text-white font-num text-base font-black shadow-sm">
+                            +$8,500
+                        </span>
+                        <div class="text-[11px] text-amber-300 font-bold mt-1">漲幅 +5.67%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 頁尾說明 -->
+        <footer class="text-center text-xs text-slate-500 py-4 space-y-1">
+            <div>資料來源：天母森林 116 年物管合約服務費建議調整內容說明（115.10.20）</div>
+            <div>僅供天母森林管理委員會內部審議與議價參考</div>
+        </footer>
+    </main>
+
+    <!-- =========================================================
+         5. 底部快捷工具列（Sticky Bottom Bar，專為手機單手操作設計）
+    ========================================================== -->
+    <div class="no-print fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <div class="max-w-2xl mx-auto flex items-center gap-2.5">
+            <button type="button" onclick="copyMeetingBrief()" class="flex-1 bg-navy hover:bg-navyLight active:scale-[0.99] text-white font-black text-sm sm:text-base py-3.5 px-4 rounded-2xl shadow-md transition flex items-center justify-center gap-2">
+                <span>📋 一鍵複製會議質詢重點（貼到 LINE 群組）</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 複製成功提示 Toast -->
+    <div id="copyToast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 hidden bg-emerald-700 text-white px-5 py-3 rounded-2xl shadow-xl font-bold text-sm flex items-center gap-2 transition-opacity">
+        <span>✅ 已複製！可直接貼上管委會 LINE 群組</span>
+    </div>
+
+    <script>
+        // 1. 完整 16 項報價明細資料（100% 精準對應天母森林報價單）
+        const quoteItems = [
+            { id: 1, cat: '正職', name: '早班保全薪資', y115: 37600, y116: 38100, diff: 500, highlight: false },
+            { id: 2, cat: '正職', name: '晚班保全組長薪資', y115: 38600, y116: 39100, diff: 500, highlight: false },
+            { id: 3, cat: '正職', name: '正職勞保(含職災)', y115: 7348, y116: 7348, diff: 0, highlight: false },
+            { id: 4, cat: '正職', name: '正職健保', y115: 3789, y116: 3789, diff: 0, highlight: false },
+            { id: 5, cat: '正職', name: '正職勞退金', y115: 4698, y116: 4698, diff: 0, highlight: false },
+            { id: 6, cat: '正職', name: '正職團保', y115: 400, y116: 400, diff: 0, highlight: false },
+            { id: 7, cat: '正職', name: '國定假日加班費16天', y115: 4417, y116: 4496, diff: 79, highlight: false },
+            { id: 8, cat: '正職', name: '特休代金14天', y115: 3865, y116: 3934, diff: 69, highlight: false },
+            { id: 9, cat: '代班', name: '代班費', y115: 26880, y116: 26880, diff: 0, highlight: false },
+            { id: 10, cat: '代班', name: '代班勞保(含職災)', y115: 0, y116: 2595, diff: 2595, highlight: true },
+            { id: 11, cat: '代班', name: '代班健保', y115: 0, y116: 1428, diff: 1428, highlight: true },
+            { id: 12, cat: '代班', name: '代班勞退金', y115: 0, y116: 1656, diff: 1656, highlight: true },
+            { id: 13, cat: '代班', name: '代班團保', y115: 0, y116: 200, diff: 200, highlight: true },
+            { id: 14, cat: '管銷', name: '營業管銷', y115: 5854, y116: 6478, diff: 624, highlight: false },
+            { id: 15, cat: '管銷', name: '稅前利潤', y115: 7406, y116: 7850, diff: 444, highlight: false },
+            { id: 16, cat: '管銷', name: '行政作業費', y115: 2000, y116: 2000, diff: 0, highlight: false }
+        ];
+
+        function fmt(num) {
+            return '$' + num.toLocaleString('zh-TW');
+        }
+
+        // 2. 渲染手機卡片式對比清單
+        function renderMobileItems(filterMode = 'all') {
+            const container = document.getElementById('mobileItemsContainer');
+            container.innerHTML = '';
+
+            const filtered = quoteItems.filter(item => {
+                if (filterMode === 'changed') return item.diff > 0;
+                if (filterMode === 'unchanged') return item.diff === 0;
+                return true;
+            });
+
+            filtered.forEach(item => {
+                const isChanged = item.diff > 0;
+                
+                // 分類標籤顏色
+                let catStyle = 'bg-blue-100 text-navyLight';
+                if (item.cat === '代班') catStyle = 'bg-red-100 text-alertRed';
+                if (item.cat === '管銷') catStyle = 'bg-amber-100 text-amberWarn';
+
+                // 卡片外框樣式
+                const cardBorder = item.highlight
+                    ? 'bg-alertBg/60 border-red-200'
+                    : (isChanged ? 'bg-white border-slate-200' : 'bg-slate-50/70 border-slate-200/70');
+
+                // 差額徽章樣式
+                const diffBadge = isChanged
+                    ? `<span class="px-2.5 py-1 rounded-lg ${item.highlight ? 'bg-alertRed text-white' : 'bg-amber-100 text-amberWarn'} font-num text-xs sm:text-sm font-black">+${fmt(item.diff)}</span>`
+                    : `<span class="px-2.5 py-1 rounded-lg bg-slate-200/80 text-slate-500 font-num text-xs font-bold">$0</span>`;
+
+                const card = document.createElement('div');
+                card.className = `rounded-2xl border p-3.5 sm:p-4 flex items-center justify-between gap-3 ${cardBorder}`;
+                card.innerHTML = `
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="px-2 py-0.5 rounded text-[11px] font-black shrink-0 ${catStyle}">${item.cat}</span>
+                            <span class="text-xs font-num text-slate-400 font-bold">#${item.id}</span>
+                        </div>
+                        <div class="text-base font-black ${isChanged ? 'text-slate-900' : 'text-slate-600'} leading-snug">
+                            ${item.name}
+                        </div>
+                    </div>
+
+                    <div class="text-right shrink-0 flex flex-col items-end gap-1">
+                        <div class="font-num text-sm sm:text-base font-bold text-slate-600">
+                            ${fmt(item.y115)} → <span class="${isChanged ? 'text-navy font-black' : 'text-slate-600'}">${fmt(item.y116)}</span>
+                        </div>
+                        ${diffBadge}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 切換篩選器狀態
+        function filterItems(mode) {
+            document.querySelectorAll('.filter-tab').forEach(btn => {
+                btn.classList.remove('bg-navy', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+            const active = document.getElementById('filter-' + mode);
+            active.classList.remove('text-slate-600');
+            active.classList.add('bg-navy', 'text-white', 'shadow-sm');
+
+            renderMobileItems(mode);
+        }
+
+        // 3. 質疑卡片展開 / 收合互動
+        function toggleQuestion(qId) {
+            const body = document.getElementById('body-' + qId);
+            const icon = document.getElementById('icon-' + qId);
+            const isHidden = body.classList.contains('hidden');
+
+            if (isHidden) {
+                body.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                body.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // 4. 一鍵複製會議質詢重點（使用相容性最高的 textarea + execCommand('copy')）
+        function copyMeetingBrief() {
+            const briefText = `【天母森林 116 年物管合約調整（方案一）管委會審議重點】
+
+📊 報價總覽（維持早班1.5人+晚班組長1.5人）：
+• 現行 115 年：$150,000 / 月（含稅）
+• 116 年方案一：$158,500 / 月（含稅）
+• 每月淨增：+$8,500 / 月（漲幅 +5.67%｜年增 +$102,000）
+
+💡 核心發現：
+未稅調漲 $8,095 元中，高達 72.6%（+$5,879）並非調高本薪，而是廠商將過去 $0 的「代班人員勞健保勞退」全額轉嫁回社區！
+
+🔥 會議現場必問四大質疑點：
+1️⃣ 代班勞健保轉嫁（+$5,879/月）：代班屬機動性質，要求改為「實報實銷」，按月檢附實際出勤與加保明細才核銷，避免固定月費溢收。
+2️⃣ 最低薪資拆算公式（44,033 vs 38,100/39,100元）：請廠商出示工時拆算公式，確認現場人員實領薪資完全合法，避免社區承擔連帶責任。
+3️⃣ 管銷與利潤連帶抽成（+$1,068/月）：代班勞健保屬法定代收代付，不應計入管銷與利潤加乘基數，建議以此議價將含稅總價降至 $156,000~$157,000 元整數。
+4️⃣ 代班團保異常（+$200/月）：正職團保 $400 未變，卻新增代班團保 $200，請廠商提供團保保單名冊與收據佐證。`;
+
+            const textArea = document.createElement('textarea');
+            textArea.value = briefText;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('複製失敗', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast() {
+            const toast = document.getElementById('copyToast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // 初始化渲染全部 16 項明細
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMobileItems('all');
+        });
+    </script>
+</body>
+</html>
