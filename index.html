@@ -59,6 +59,36 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        /* 分頁導覽按鈕明確樣式規則（解決動態切換顏色未更新問題） */
+        .tab-btn {
+            background-color: #f1f5f9 !important;
+            color: #475569 !important;
+            border: 1px solid #cbd5e1 !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+        .tab-btn:hover {
+            background-color: #e2e8f0 !important;
+            color: #0F294A !important;
+        }
+        .tab-btn.active {
+            background-color: #0F294A !important;
+            color: #ffffff !important;
+            border-color: #0F294A !important;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25) !important;
+            transform: translateY(-1px);
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background-color: #fbbf24;
+            border-radius: 999px;
+        }
         /* 列印樣式優化 */
         @media print {
             body { background: #FFFFFF !important; padding-bottom: 0 !important; }
@@ -70,16 +100,24 @@
 <body class="antialiased selection:bg-amber-200 selection:text-navy">
 
     <!-- 頂部快速導覽列（手機單手滑動切換章節） -->
-    <nav class="no-print sticky top-0 z-40 bg-navy/95 backdrop-blur-md text-white border-b border-white/10 shadow-md">
+    <nav id="sticky-nav" class="no-print sticky top-0 z-40 bg-white/95 backdrop-blur-md text-navy border-b border-slate-200 shadow-sm">
         <div class="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
-            <span class="text-xs font-bold tracking-wider text-amber-300 whitespace-nowrap shrink-0">
-                天母森林｜管委會審議
+            <span class="text-xs font-black tracking-wider text-navy whitespace-nowrap shrink-0">
+                天母森林｜審議指南
             </span>
-            <div class="flex items-center gap-1.5 shrink-0">
-                <a href="#sec-overview" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/20 transition whitespace-nowrap">1. 總覽</a>
-                <a href="#sec-breakdown" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/20 transition whitespace-nowrap">2. 錢去哪</a>
-                <a href="#sec-questions" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-alertRed text-white shadow-sm whitespace-nowrap">3. 四大質疑點</a>
-                <a href="#sec-details" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/20 transition whitespace-nowrap">4. 16項明細</a>
+            <div class="flex items-center gap-1.5 shrink-0" role="tablist">
+                <button type="button" data-tab="sec-overview" onclick="switchTab('sec-overview', this)" class="tab-btn active px-3 py-1.5 rounded-xl text-xs font-black whitespace-nowrap">
+                    1. 總覽
+                </button>
+                <button type="button" data-tab="sec-breakdown" onclick="switchTab('sec-breakdown', this)" class="tab-btn px-3 py-1.5 rounded-xl text-xs font-black whitespace-nowrap">
+                    2. 錢去哪
+                </button>
+                <button type="button" data-tab="sec-questions" onclick="switchTab('sec-questions', this)" class="tab-btn px-3 py-1.5 rounded-xl text-xs font-black whitespace-nowrap">
+                    3. 四大質疑點
+                </button>
+                <button type="button" data-tab="sec-details" onclick="switchTab('sec-details', this)" class="tab-btn px-3 py-1.5 rounded-xl text-xs font-black whitespace-nowrap">
+                    4. 16項明細
+                </button>
             </div>
         </div>
     </nav>
@@ -692,9 +730,76 @@
             }, 3000);
         }
 
-        // 初始化渲染全部 16 項明細
+        // 5. 分頁按鈕點擊切換、高亮狀態與平滑捲動定位
+        let isManualScrolling = false;
+
+        function setActiveTabUI(targetId) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-tab') === targetId) {
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    // 自動將選中按鈕平滑置中於手機橫向導覽列
+                    btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                }
+            });
+        }
+
+        function switchTab(targetId, clickedBtn) {
+            // 立即切換按鈕 Active 視覺狀態
+            setActiveTabUI(targetId);
+
+            // 計算導覽列高度並平滑捲動至該區塊頂部
+            const targetEl = document.getElementById(targetId);
+            const navEl = document.getElementById('sticky-nav');
+            if (targetEl) {
+                isManualScrolling = true;
+                const navHeight = navEl ? navEl.offsetHeight : 56;
+                const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - navHeight - 12;
+
+                window.scrollTo({
+                    top: Math.max(0, offsetPosition),
+                    behavior: 'smooth'
+                });
+
+                setTimeout(() => {
+                    isManualScrolling = false;
+                }, 700);
+            }
+        }
+
+        // 監聽頁面手動捲動，同步更新頂部 1、2、3、4 分頁按鈕狀態
+        function initScrollSpy() {
+            const sectionIds = ['sec-overview', 'sec-breakdown', 'sec-questions', 'sec-details'];
+            window.addEventListener('scroll', () => {
+                if (isManualScrolling) return;
+                const navEl = document.getElementById('sticky-nav');
+                const navHeight = navEl ? navEl.offsetHeight : 56;
+                const scrollPos = window.scrollY + navHeight + 60;
+
+                let currentId = sectionIds[0];
+                for (const id of sectionIds) {
+                    const el = document.getElementById(id);
+                    if (el && el.offsetTop <= scrollPos) {
+                        currentId = id;
+                    }
+                }
+                // 若已捲動至頁面最底部，直接高亮最後一項
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
+                    currentId = sectionIds[sectionIds.length - 1];
+                }
+                setActiveTabUI(currentId);
+            }, { passive: true });
+        }
+
+        // 初始化渲染全部 16 項明細與捲動監聽
         window.addEventListener('DOMContentLoaded', () => {
             renderMobileItems('all');
+            initScrollSpy();
         });
     </script>
 </body>
